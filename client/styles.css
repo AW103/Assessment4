@@ -1,0 +1,46 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  height: 100%
+}
+h2.brand {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 20px;
+  font-weight: 500px;
+  padding-left: 10%;
+}
+.btnSection {
+  display: block;
+  text-align: center;
+  padding: 5rem 10rem;
+  background-color: rgb(245, 255, 203);
+}
+#quoteBox {
+  padding: 5rem 10rem;
+  text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1483794344563-d27a8d18014e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-size: 100% 88%;
+  background-attachment:fixed;
+  background-repeat: no-repeat;
+}
+#worries{
+    text-align: center;
+}
+#flower{
+    text-align: center;
+    padding: 3rem; 
+}
+img.flower {
+    width: 10%;
+    height: 10%;
+    position: relative;
+    animation-name: flower;
+    animation-timing-function: linear;
+    animation-duration: 4s;
+    animation-direction: alternate;
+    animation-iteration-count: 6;
+}
+@keyframes flower {
+    from {width: 10%; height: 10%;}
+    to {width: 50%; height: 50%;}
+}
