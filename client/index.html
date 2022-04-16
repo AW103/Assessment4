@@ -6,21 +6,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Ubuntu:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Montserrat:wght@400;500;600&family=Ubuntu:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <!-- style sheets -->
-    <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="navbar-brand bg-dark">
-          <h2 class="brand">Good Vibes Only</h2>
+          <h2 class="brand">
+            Good Vibes Only
+            <i style="font-size: 2rem;" class="bi bi-balloon-heart"></i></h2>
         </div>
       </div>
     </header>
@@ -36,43 +39,51 @@
           Get a zen quote
         </button>
       </section>
-      <section id="quoteBox"></section>
+      <section id="textBox"></section>
       <section id="worries">
         <h2>Sometimes, we just need a good rant.</h2>
         <p>
           Witholding negative emotions and thought can be harmful to our mental
           and emotional health. That being said, we don't always want to share
-          things with the people around us. Feel free to type out your negative
-          thoughts below. Whenever needed, hover your cursor over the flower and
-          breathe in and out as it grows and shrinks. When you're done typing,
-          click the release button. Your words will not be saved, simply
-          released. Happy ranting. 
+          things with the people around us. Type out your negative thoughts
+          below. When you're done typing, click the release button. Your words
+          will not be saved, simply released. Need a breather? Click the flower.
+          Breathe in and out as it grows and shrinks.
         </p>
-        <input type="text" />
-        <button class="btn btn-outline-dark">Release</button>
-        <div id="flower"><img class="flower" src="https://img.freepik.com/free-vector/cute-flower-cartoon-character_313669-38.jpg" alt="cute flower"></div>
+        <input type="text" placeholder="Let it out" />
+        <button id="release" class="btn btn-sm btn-outline-dark">
+          Release
+        </button>
+        <div id="flower">
+          <img
+            class=""
+            src="https://img.freepik.com/free-vector/cute-flower-cartoon-character_313669-38.jpg"
+            alt="cute flower"
+          />
+        </div>
       </section>
-
+      <section id="positives">
+        <h2>Now, time for some balance.</h2>
+        <p>
+          Life is a mixture of positives and negatives. Outweighing the
+          negatives with positives is not a natural mindset for everyone. It is
+          often a skill that takes diligence, time, and patience. Let's start
+          now. Type a list of positive things. It can be things in your life,
+          experiences, or just dreams and wishes. Try to type at least 5.
+        </p>
+        <form id="positiveForm">
+          <input type="text" id="goodThing" placeholder="Good vibes only" />
+          <button class="btn btn-sm btn-success" id="submitGood">ADD</button>
+        </form>
+        <section id="positivesBox">
+          <div>
+            <ol id="itemsList"></ol>
+          </div>
+        </section>
+      </section>
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script>
-        document.getElementById("complimentButton").onclick = function () {
-          axios
-            .get("http://localhost:4000/api/compliment/")
-            .then(function (response) {
-              const data = response.data;
-              alert(data);
-            });
-        };
-        document.getElementById("fortuneButton").onclick = function () {
-          axios
-            .get("http://localhost:4000/api/fortune/")
-            .then(function (response) {
-              const data = response.data;
-              alert(data);
-            });
-        };
-      </script>
       <script src="main.js"></script>
     </main>
+    <footer>Andrea Espinosa-Walsh 2022</footer>
   </body>
 </html>

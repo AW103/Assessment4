@@ -1,4 +1,4 @@
-const quotes = require("./db.json");
+const quotes = require("./quotes.json");
 
 module.exports = {
     getCompliment: (req, res) => {
