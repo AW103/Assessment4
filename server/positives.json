@@ -2,5 +2,9 @@
    {
       "positiveItem": "I love the smell of bread.",
       "id": "1"
+   }, 
+   {
+      "positiveItem": "Chocolate is incredible.",
+      "id": "2"
    } 
 ]
