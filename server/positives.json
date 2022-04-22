@@ -1,10 +1,12 @@
 [
    {
+      "id": 0,
       "positiveItem": "I love the smell of bread.",
-      "id": "1"
+      "color": "blue"
    }, 
    {
+      "id": 1,
       "positiveItem": "Chocolate is incredible.",
-      "id": "2"
+      "color": "blue"
    } 
 ]

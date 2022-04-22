@@ -1,16 +1,19 @@
 const textBox = document.getElementById("textBox");
+const item = document.getElementById("item");
 const positivesBox = document.getElementById("positivesBox");
 const form = document.querySelector("form");
+let positiveCard;
 
 const baseURL = `http://localhost:4000/api/`;
 
 const submitHandler = (event) => {
   event.preventDefault();
   let input = document.querySelector("#goodThing");
-  let newObj = { positiveItem: input.value };
-  console.log(`newObj is ${newObj}`);
+  let newObj = { positiveItem: input.value, color: input.style.color };
+  // console.log(`newObj is ${newObj}`);
   createPositive(newObj);
   input.value = "";
+  console.log(input);
 };
 
 // Compliment req and functions ----------------------
@@ -51,7 +54,6 @@ const printFortune = (data) => {
 };
 // ---------------------------------------------------------------------
 
-
 // Quote req and functions -----------------------------------------
 document.getElementById("quoteButton").onclick = function () {
   axios.get(`${baseURL}quote`).then(function (response) {
@@ -72,12 +74,12 @@ const printQuote = (data) => {
   let author = document.createElement("p");
   author.textContent = data.a;
   textBox.appendChild(author);
-  console.log(textBox.children);
+  // console.log(textBox.children);
 };
 // ---------------------------------------------------------
 
 // Rant and Breath section -----------------------------------------
-//   rant 
+//   rant
 const releaseBtn = document.getElementById("release");
 const release = (event) => {
   let rantText = document.querySelector("input");
@@ -88,7 +90,7 @@ releaseBtn.addEventListener("click", release);
 // flower
 const flower = document.querySelector("img");
 const breathingFlower = (event) => {
-  console.log("Flower clicked");
+  // console.log("Flower clicked");
   flower.classList.toggle("flower");
 };
 flower.addEventListener("click", breathingFlower);
@@ -96,39 +98,53 @@ flower.addEventListener("click", breathingFlower);
 // -----------------------------------------------------------------
 
 // Positives req and functions -------------------------------------
-const positivesCallback = ({data: positive}) => displayPositives(positive);
+const positivesCallback = ({ data: positive }) => displayPositives(positive);
+
 const getPositives = () => {
-  axios.get(baseURL).then(positivesCallback)
-}
+  axios.get(baseURL).then(positivesCallback);
+};
 const createPositive = (body) => {
   axios.post(`${baseURL}form`, body).then((res) => {
     const data = res.data;
     createPositiveCard(data);
-    console.log(`frontend data is ${data.positiveItem}`);
+    // console.log(`Main.js: createPositive data is ${data.positiveItem}`);
   });
 };
 const deletePositive = (id) => {
   axios.delete(`${baseURL}formDelete/${id}`).then(positivesCallback);
+  // console.log(`Main.js: delete id is ${id}`);
+};
+
+const updatePositive = (id) => {
+  axios.put(`${baseURL}updatePositive/${id}`).then((res) => {
+   let newColor = res.data[id].color;
+   console.log(res.data);
+   console.log(positiveCard);
+    positiveCard[id].style.color = newColor
+    // positivesCallback()
+  });
 };
 
 const createPositiveCard = (data) => {
-  console.log(`PositiveCard data is ${data}`);
-  let itemsList = document.getElementById("itemsList");
+  console.log(`Main.js: createPositiveCard data is ${data}`);
   if (!data) {
     return alert("Looks like you forgot to type something.");
   }
-  const positiveCard = document.createElement("li");
+  positiveCard = document.createElement("li");
+  positiveCard.setAttribute("id", "item");
   positiveCard.classList.add("item");
-  positiveCard.innerHTML= `${data.positiveItem}<button onclick="deletePositive(${data.id})">X</button>`;
-  itemsList.append(positiveCard);
+  positiveCard.innerHTML = `${data.positiveItem}
+  <button class="btn btn-sm btn-outline-secondary add" onclick="deletePositive(${data.id})">DELETE</button>
+  <button class="btn btn-sm btn-outline-secondary add" onclick="updatePositive(${data.id})"><i style="font-size: 1rem; color: gray;" class="bi bi-palette"></i></button>`;
   positivesBox.appendChild(positiveCard);
 };
 
 const displayPositives = (arr) => {
-  console.log(`displayPositive arr is ${arr}`);
+  positivesBox.innerHTML = ``;
+  console.log(`Main.js: displayPositive arr is ${JSON.stringify(arr)}`);
   for (let i = 0; i < arr.length; i++) {
-    createPositiveCard(arr[i])
-}
+    createPositiveCard(arr[i]);
+  }
 };
 
 form.addEventListener("submit", submitHandler);
