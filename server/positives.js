@@ -1,4 +1,5 @@
 const positives = require("./positives.json"); 
+const colors = ["red", "blue", "orange", "purple", "pink", "white"];
 let globalId = 2;
 
 module.exports = {
@@ -27,12 +28,13 @@ res.status(200).send(positives)
         // console.log(`Positives.js: Positives arr are spliced into ${JSON.stringify(positives)}`);
         res.status(200).send(positives)
       },
-      updatePositive: (req,res) => {
-          let {id} = req.params;
-         let index = positives.findIndex((elem) => elem.id === +id);
-        console.log(id);
-         positives[id].color = "red";
-         console.log(positives[id]);
-        res.status(200).send(positives)
-    }
+      updatePositive: (req, res) => {
+        let randomNumber = Math.floor(Math.random() * 4);
+        let { id } = req.params;
+        // console.log(`ID inside the backend method: ${id}`);
+        positives[id].color = colors[randomNumber];
+        // console.log(`Updated positiveItem with new color: ${JSON.stringify(positives[id])}`);
+        // console.log(`Positives array to send back: ${JSON.stringify(positives)}`);
+        res.status(200).send(positives);
+      },
 }

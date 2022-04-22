@@ -115,13 +115,14 @@ const deletePositive = (id) => {
   // console.log(`Main.js: delete id is ${id}`);
 };
 
-const updatePositive = (id) => {
-  axios.put(`${baseURL}updatePositive/${id}`).then((res) => {
-   let newColor = res.data[id].color;
-   console.log(res.data);
-   console.log(positiveCard);
-    positiveCard[id].style.color = newColor
-    // positivesCallback()
+const updatePositive = id => {
+  console.log(`ID that passed to updatePositive: ${id}`);
+  axios.put(`${baseURL}updatePositive/${id}`).then(res => {
+    let newColor = res.data[id].color;
+    // console.log(newColor);
+    let element = document.getElementById("positivesBox").children[id]; 
+    console.log(element);
+    element.style.color = newColor;
   });
 };
 
