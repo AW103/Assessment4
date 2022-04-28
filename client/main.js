@@ -4,7 +4,7 @@ const positivesBox = document.getElementById("positivesBox");
 const form = document.querySelector("form");
 let positiveCard;
 
-const baseURL = `http://localhost:4000/api/`;
+const baseURL = `http://localhost:3000/api/`;
 
 const submitHandler = (event) => {
   event.preventDefault();
