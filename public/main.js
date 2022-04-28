@@ -4,7 +4,7 @@ const positivesBox = document.getElementById("positivesBox");
 const form = document.querySelector("form");
 let positiveCard;
 
-const baseURL = `http://localhost:3000/api/`;
+// const baseURL = `http://localhost:3000/api/`;
 
 axios.get("/").then(res => {
   console.log("print the stuff");
@@ -21,7 +21,7 @@ const submitHandler = (event) => {
 
 // Compliment req and functions ----------------------
 document.getElementById("complimentButton").onclick = function () {
-  axios.get(`${baseURL}compliment`).then(function (response) {
+  axios.get(`/api/compliment`).then(function (response) {
     const data = response.data;
     printCompliment(data);
   });
@@ -40,7 +40,7 @@ const printCompliment = (data) => {
 
 // Fortune req and functions -----------------------------------------
 document.getElementById("fortuneButton").onclick = function () {
-  axios.get(`${baseURL}fortune`).then(function (response) {
+  axios.get(`/api/fortune`).then(function (response) {
     const data = response.data;
     printFortune(data);
   });
@@ -59,7 +59,7 @@ const printFortune = (data) => {
 
 // Quote req and functions -----------------------------------------
 document.getElementById("quoteButton").onclick = function () {
-  axios.get(`${baseURL}quote`).then(function (response) {
+  axios.get(`/api/quote`).then(function (response) {
     const data = response.data;
     printQuote(data);
   });
@@ -104,23 +104,23 @@ flower.addEventListener("click", breathingFlower);
 const positivesCallback = ({ data: positive }) => displayPositives(positive);
 
 const getPositives = () => {
-  axios.get(baseURL).then(positivesCallback);
+  axios.get("/api/").then(positivesCallback);
 };
 const createPositive = (body) => {
-  axios.post(`${baseURL}form`, body).then((res) => {
+  axios.post(`/api/form`, body).then((res) => {
     const data = res.data;
     createPositiveCard(data);
     // console.log(`Main.js: createPositive data is ${data.positiveItem}`);
   });
 };
 const deletePositive = (id) => {
-  axios.delete(`${baseURL}formDelete/${id}`).then(positivesCallback);
+  axios.delete(`/api/formDelete/${id}`).then(positivesCallback);
   // console.log(`Main.js: delete id is ${id}`);
 };
 
 const updatePositive = id => {
   console.log(`ID that passed to updatePositive: ${id}`);
-  axios.put(`${baseURL}updatePositive/${id}`).then(res => {
+  axios.put(`/api/updatePositive/${id}`).then(res => {
     let newColor = res.data[id].color;
     // console.log(newColor);
     let element = document.getElementById("positivesBox").children[id]; 
