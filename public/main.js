@@ -2,6 +2,7 @@ const textBox = document.getElementById("textBox");
 const item = document.getElementById("item");
 const positivesBox = document.getElementById("positivesBox");
 const form = document.querySelector("form");
+const axios = require('axios');
 let positiveCard;
 
 const baseURL = `http://localhost:3000/api/`;
