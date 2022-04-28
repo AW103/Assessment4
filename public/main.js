@@ -21,7 +21,7 @@ const submitHandler = (event) => {
 
 // Compliment req and functions ----------------------
 document.getElementById("complimentButton").onclick = function () {
-  axios.get(`/compliment`).then(function (response) {
+  axios.get(`${baseURL}compliment`).then(function (response) {
     const data = response.data;
     printCompliment(data);
   });
