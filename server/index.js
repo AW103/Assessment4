@@ -11,9 +11,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
 
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/index.html'))
-// })
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+})
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
 app.get("/api/quote", getQuote);
