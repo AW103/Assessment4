@@ -5,9 +5,7 @@ const form = document.querySelector("form");
 let positiveCard;
 
 const baseURL = `http://localhost:3000/api/`;
-axios.get("/").then(res => {
-  submitHandler(res)
-})
+
 const submitHandler = (event) => {
   event.preventDefault();
   let input = document.querySelector("#goodThing");
