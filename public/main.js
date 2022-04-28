@@ -8,6 +8,7 @@ let positiveCard;
 
 axios.get("/").then(res => {
   console.log("print the stuff");
+  submitHandler(res)
 });
 const submitHandler = (event) => {
   event.preventDefault();

@@ -31,7 +31,7 @@ res.status(200).send(positives)
       updatePositive: (req, res) => {
         let randomNumber = Math.floor(Math.random() * 4);
         let { id } = req.params;
-        // console.log(`ID inside the backend method: ${id}`);
+        console.log(`ID inside the backend method: ${id}`);
         positives[id].color = colors[randomNumber];
         // console.log(`Updated positiveItem with new color: ${JSON.stringify(positives[id])}`);
         // console.log(`Positives array to send back: ${JSON.stringify(positives)}`);
