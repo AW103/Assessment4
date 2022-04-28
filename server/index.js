@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"))
 
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
