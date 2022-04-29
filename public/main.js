@@ -153,4 +153,4 @@ const displayPositives = (arr) => {
 };
 
 form.addEventListener("submit", submitHandler);
-getPositives();
+// getPositives();
