@@ -153,4 +153,4 @@ const displayPositives = (arr) => {
 };
 
 form.addEventListener("submit", submitHandler);
-window.onload = form.reset();
+window.onload = positivesBox.reset();
