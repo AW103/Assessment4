@@ -6,7 +6,7 @@ let positiveCard;
 
 // const baseURL = `http://localhost:3000/api/`;
 
-axios.get("/").then(res => {
+document.body.onload = axios.get("/").then(res => {
   console.log("print the stuff");
   getPositives(res)
 });
@@ -153,4 +153,4 @@ const displayPositives = (arr) => {
 };
 
 form.addEventListener("submit", submitHandler);
-window.onload = positivesBox.reset();
+
