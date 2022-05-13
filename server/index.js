@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const path = require('path')
+const path = require('path');
 
 const { getCompliment, getFortune, getQuote } = require("./controllers");
 const {createPositive, deletePositive, getPositives, updatePositive} = require("./positives");
