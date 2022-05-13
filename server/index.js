@@ -25,12 +25,13 @@ app.use("/styles", express.static(path.join(__dirname,"../public/styles.css")));
 app.use("/frontend", express.static(path.join(__dirname,"../public/main.js")));
 
 app.get('/', (req, res) => {
+    req.session.destroy();
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
-app.get("/reset", (req,res) => {
-    req.session.destroy();
-    res.status(200).redirect("/");
-})
+// app.get("/reset", (req,res) => {
+//     req.session.destroy();
+//     res.status(200);
+// })
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
 app.get("/api/quote", getQuote);

@@ -153,11 +153,11 @@ const displayPositives = (arr) => {
   }
 };
 
-window.onload = axios.get("/reset").then((res) => {
-  console.log(res);
-}).catch((err) => {
-  console.log(err);
-})
+// window.onload = axios.get("/reset").then((res) => {
+//   console.log(res);
+// }).catch((err) => {
+//   console.log(err);
+// })
 
 form.addEventListener("submit", submitHandler);
 
