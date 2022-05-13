@@ -1,13 +1,10 @@
 const positives = require("./positives.json"); 
 const colors = ["red", "blue", "orange", "purple", "pink", "white"];
 let globalId = 2;
-const session = require('express-session')
 
 module.exports = {
     getPositives: (req,res) => {
-req.session.destroy((err) => {
-  res.status(200).send(positives)
-});
+res.status(200).send(positives)
     },
     createPositive: (req, res) => {
           const {positiveItem, color} = req.body;

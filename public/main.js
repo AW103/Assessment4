@@ -2,11 +2,12 @@ const textBox = document.getElementById("textBox");
 const item = document.getElementById("item");
 const positivesBox = document.getElementById("positivesBox");
 const form = document.querySelector("form");
+const body = document.querySelector("body")
 let positiveCard;
 
 // const baseURL = `http://localhost:3000/api/`;
 
-document.body.onload = axios.get("/").then(res => {
+axios.get("/").then(res => {
   console.log("print the stuff");
   getPositives(res)
 });
@@ -151,6 +152,10 @@ const displayPositives = (arr) => {
     createPositiveCard(arr[i]);
   }
 };
+
+window.onload = axios.get("/reset").then((res) => {
+  console.log(res);
+})
 
 form.addEventListener("submit", submitHandler);
 
