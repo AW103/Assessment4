@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
 })
 app.get("/reset", (req,res) => {
     req.session.destroy();
+    res.status(200).redirect("/");
 })
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
