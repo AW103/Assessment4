@@ -3,7 +3,7 @@ const cors = require("cors");
 const path = require('path');
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const secret = process.env.SECRET;
 
 const { getCompliment, getFortune, getQuote } = require("./controllers");
@@ -15,11 +15,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(session({
-    secret: secret,
-    saveUninitialized:true,
-    resave: false,
-}))
+// app.use(session({
+//     secret: secret,
+//     saveUninitialized:true,
+//     resave: false,
+// }))
 app.use("/styles", express.static(path.join(__dirname,"../public/styles.css")));
 app.use("/frontend", express.static(path.join(__dirname,"../public/main.js")));
 
