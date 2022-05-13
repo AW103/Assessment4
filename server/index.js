@@ -17,7 +17,8 @@ app.use(cookieParser());
 app.use(session({
     secret: secret,
     saveUninitialized:true,
-    resave: false
+    resave: false,
+    cookie: { maxAge: 6000 }
 }))
 app.use("/styles", express.static(path.join(__dirname,"../public/styles.css")));
 app.use("/frontend", express.static(path.join(__dirname,"../public/main.js")));
