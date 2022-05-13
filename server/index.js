@@ -3,7 +3,8 @@ const cors = require("cors");
 const path = require('path');
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
-const secret = process.env.SECRET
+const dotenv = require('dotenv').config();
+const secret = process.env.SECRET;
 
 const { getCompliment, getFortune, getQuote } = require("./controllers");
 const {createPositive, deletePositive, getPositives, updatePositive, resetData} = require("./positives");
