@@ -36,5 +36,5 @@ res.status(200).send(positives)
         // console.log(`Updated positiveItem with new color: ${JSON.stringify(positives[id])}`);
         // console.log(`Positives array to send back: ${JSON.stringify(positives)}`);
         res.status(200).send(positives);
-      },
+      }
 }

@@ -1,13 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const path = require('path');
-const cookieParser = require("cookie-parser");
-const session = require('express-session');
-const dotenv = require('dotenv').config();
-const secret = process.env.SECRET;
+// const cookieParser = require("cookie-parser");
+// const session = require('express-session');
+// const dotenv = require('dotenv').config();
+// const secret = process.env.SECRET;
 
 const { getCompliment, getFortune, getQuote } = require("./controllers");
-const {createPositive, deletePositive, getPositives, updatePositive, resetData} = require("./positives");
+const {createPositive, deletePositive, getPositives, updatePositive} = require("./positives");
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use("/styles", express.static(path.join(__dirname,"../public/styles.css")));
 app.use("/frontend", express.static(path.join(__dirname,"../public/main.js")));
 
 app.get('/', (req, res) => {
-    req.session.destroy();
+    // req.session.destroy();
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 // app.get("/reset", (req,res) => {
