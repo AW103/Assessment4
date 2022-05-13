@@ -13,14 +13,14 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-// app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(session({
-    secret: secret,
-    saveUninitialized:true,
-    resave: false,
-    cookie: { maxAge: 6000 }
-}))
+// app.use(session({
+//     secret: secret,
+//     saveUninitialized:true,
+//     resave: false,
+//     cookie: { maxAge: 6000 }
+// }))
 app.use("/styles", express.static(path.join(__dirname,"../public/styles.css")));
 app.use("/frontend", express.static(path.join(__dirname,"../public/main.js")));
 
